@@ -1,7 +1,7 @@
 import ProductService from '@/services/ProductService.js'
 
 export const state = () => ({
-  products: [],
+  productsy: [],
 })
 
 export const mutations = {
@@ -11,12 +11,16 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchProducts({ commit }) {
-    try {
-      const { data } = await ProductService.getProducts()
-      commit('SET_PRODUCTS', data)
-    } catch (e) {
-      console.log('Error occured while fetching products:', e)
-    }
-  }, ///doesn't need catch error statement ?
+   fetchProducts({ commit }) {
+    console.log("inside fetchProducts");
+      return ProductService.getProducts().then((response)=>{
+        commit('SET_PRODUCTS', response.data)
+      }).catch((error)=>{
+        console.log("An error happened",error);
+      })
+      
+    } 
+      
+    
+   ///doesn't need catch error statement ?
 }

@@ -15,25 +15,39 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
+import ProductCard from '~/components/ProductCard.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'IndexPage',
   head() {
     return {
       title: 'Home',
-      meta: [{
-        hid: 'Description',
-        name: 'Description',
-        content: 'Explore your favorite products',
-      }],
+      meta: [
+        {
+          hid: 'Description',
+          name: 'Description',
+          content: 'Explore your favorite products',
+        },
+      ],
     }
   },
-  async fetch({ store }) {
-    console.log("inside fetch function")
-    store.dispatch('product/fetchProducts')
+  async fetch({ store, error }) {
+    try {
+      console.log('inside fetch function')
+      await store.dispatch('product/fetchProducts')
+    } catch (e) {
+      error({
+        statusCode: 503,
+        message:
+          'Unable to fetch events data at this time.Please try again later.',
+      })
+    }
   },
   computed: {
     ...mapState(['product']),
+  },
+  components: {
+    ProductCard,
   },
 }
 </script>
