@@ -2,7 +2,8 @@
   <div class="app">
     <NavBar />
     <PageHeader />
-    <PageFooter />
     <nuxt />
+    <PageFooter />
+    
   </div>
 </template>

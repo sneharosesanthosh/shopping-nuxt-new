@@ -25,7 +25,7 @@
               >
             </li>
             <li>
-              <nuxt-link to="{ name: 'AboutView' }" class="nav-link"
+              <nuxt-link to="/about" class="nav-link"
                 >About</nuxt-link
               >
             </li>
@@ -51,7 +51,7 @@
           </ul>
           <form class="d-flex">
             <nuxt-link
-              :to="{ name: 'CartView' }"
+              :to="{ name: 'cart' }"
               class="nav-item nav-link btn btn-outline-dark"
               type="submit"
             >
