@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="{}">
+  <nuxt-link :to=" '/'+product.id">
     <div class="col mb-5">
       <div class="card h-100">
         <!-- Sale badge-->
@@ -10,7 +10,7 @@
           Sale
         </div>
         <!-- Product image-->
-        <img class="card-img-top" alt="..." />
+        <img class="card-img-top" :src="product.image" alt="..." />
         <!-- Product details-->
         <div class="card-body p-4">
           <div class="text-center">
@@ -24,7 +24,12 @@
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
           <div class="text-center">
-            <a class="btn btn-outline-dark mt-auto" href="#" @click="addToCart()">Add to cart</a>
+            <a
+              class="btn btn-outline-dark mt-auto"
+              href="#"
+              @click="addToCart()"
+              >Add to cart</a
+            >
           </div>
         </div>
       </div>
@@ -37,8 +42,8 @@ export default {
   props: ['product'],
   methods: {
     addToCart() {
-      console.log("Add to cart button clicked");
-    }
-  }
+      console.log('Add to cart button clicked')
+    },
+  },
 }
 </script>
