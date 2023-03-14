@@ -3,8 +3,8 @@
       <div class="container px-4 px-lg-5">
         <!-- can we use <a> and give route path to it -->
         <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
-        <router-link :to="{ name: 'HomeView' }" class="nav-link"
-          >Shopping Site</router-link
+        <nuxt-link to="/" class="nav-link"
+          >Shopping Site</nuxt-link
         >
         <button
           class="navbar-toggler"
@@ -20,13 +20,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <router-link :to="{ name: 'HomeView' }" class="nav-link active"
-                >Home</router-link
+              <nuxt-link to="/" class="nav-link active"
+                >Home</nuxt-link
               >
             </li>
             <li>
-              <router-link :to="{ name: 'AboutView' }" class="nav-link"
-                >About</router-link
+              <nuxt-link to="{ name: 'AboutView' }" class="nav-link"
+                >About</nuxt-link
               >
             </li>
   
@@ -50,7 +50,7 @@
             </li>
           </ul>
           <form class="d-flex">
-            <router-link
+            <nuxt-link
               :to="{ name: 'CartView' }"
               class="nav-item nav-link btn btn-outline-dark"
               type="submit"
@@ -60,7 +60,7 @@
               <span class="badge bg-dark text-white ms-1 rounded-pill">{{
                 
               }}</span>
-            </router-link>
+            </nuxt-link>
           </form>
         </div>
       </div>
@@ -79,7 +79,7 @@
   <script></script>
   
   <style scoped>
-  router-link {
+  nuxt-link {
     display: inline;
   }
   </style>
