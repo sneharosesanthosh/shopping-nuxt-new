@@ -10,9 +10,4 @@ const apiClient = axios.create({
 })
 
 export default {
-    getProducts() {
-        console.log("inside getProducts");
-        return apiClient.get("/products");
-    },
-
-}
+    getProducts() {        console.log("inside getProducts");        return apiClient.get("/products");    },}
