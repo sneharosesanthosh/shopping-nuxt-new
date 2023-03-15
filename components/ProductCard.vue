@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to=" '/'+product.id">
+  <nuxt-link :to="'/' + product.id">
     <div class="col mb-5">
       <div class="card h-100">
         <!-- Sale badge-->
@@ -27,7 +27,7 @@
             <a
               class="btn btn-outline-dark mt-auto"
               href="#"
-              @click="addToCart()"
+              @click.prevent="setCartItem(product)"
               >Add to cart</a
             >
           </div>
@@ -38,12 +38,13 @@
 </template>
 
 <script>
+import { mapState,mapActions } from 'vuex'
+
 export default {
   props: ['product'],
+  computed: { ...mapState(['cart']) },
   methods: {
-    addToCart() {
-      console.log('Add to cart button clicked')
-    },
+    ...mapActions({ setCartItem: "cart/setCartItem" }),
   },
 }
 </script>

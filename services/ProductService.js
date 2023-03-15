@@ -17,5 +17,6 @@ export default {
   getProduct(id) {
     console.log("Inside getProduct")
     return apiClient.get('/products/'+id)
-  }
+  },
+  
 }

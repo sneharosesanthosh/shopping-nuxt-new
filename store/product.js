@@ -14,7 +14,7 @@ export const mutations = {
   SET_PRODUCT(state,product) {
     console.log("Inside set product",product)
     state.product = product
-    console.log("After set product:",state.product)
+    
   }
 }
 
@@ -41,4 +41,14 @@ export const actions = {
   }
 
   ///doesn't need catch error statement ?
+}
+
+
+export const getters = {
+  getProducts(state) {
+    return state.products 
+  },
+  getProduct(state) {
+    return state.product
+  }
 }

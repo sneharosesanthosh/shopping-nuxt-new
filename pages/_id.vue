@@ -1,56 +1,68 @@
 <template>
   <div>
     <div>Product details View</div>
-    <!-- <h1>Product id is {{ prod_id }}</h1> -->
-    <h2>Product: {{ product.title }}</h2>
-    <h3>Category: {{ product.category }}</h3>
-    <img :src="product.image" alt="" srcset="" />
-    <button>Add To Cart</button>
-
-    <nuxt-link :to="{ name: 'cart' }" @click="fetchCartItems()"
-      >Go to Cart</nuxt-link
+    <h2>Product: {{ product.product.title }}</h2>
+    <h3>Category: {{ product.product.category }}</h3>
+    <img :src="product.product.image" alt="" srcset="" />
+    <button
+      v-if="!productExistInCart"
+      @click.prevent="setCartItem(product.product)"
     >
-<!-- 
+      Add To Cart
+    </button>
+
+    <nuxt-link :to="{ name: 'cart' }" v-else>Go to Cart</nuxt-link>
+
     <input
       type="number"
       v-show="false"
       id="quantity"
       name="quantity"
       :value="cart.quantity"
-    /> -->
+    />
   </div>
-  
+  <!-- <h3>Product title: {{ product.title }}</h3> -->
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
+import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
-  head() {
-    return {
-      title: 'product:#' + this.product.id,
-      meta: [
-        {
-          hid: 'Description',
-          name: 'Description',
-          content: 'this is individual product details',
-        },
-      ],
-    }
+  data() {
+    return {}
   },
-  async fetch({ store, error, params }) {
+  // props: ["id"],
+  async fetch({ store, params }) {
     try {
-        console.log("inside async fetch")
       await store.dispatch('product/fetchProduct', params.id)
     } catch (e) {
       error({
         statusCode: 503,
-        message: 'Could not fetch product',
+        message: 'Unable to fetch cart items',
       })
     }
   },
-  computed: mapState({
-    product: (state) => state.product.product,
-  }),
+  methods: {
+    ...mapActions({
+      fetchProduct: 'product/fetchProduct',
+      //   fetchCartItems: 'cart/fetchCartItems',
+      setCartItem: 'cart/setCartItem',
+    }),
+
+    // addToCart() {
+    //   this.setCartItem(this.product.product);
+
+    //   console.log("product", this.product.product);
+    // },
+  },
+  computed: {
+    ...mapState(['product', 'cart']),
+    ...mapGetters('cart', ['getCartItems','getItemById']),
+    ...mapGetters('product', ['getProduct']),
+    productExistInCart (state) {
+     return this.getItemById(this.product.product.id)
+    }
+  },
 }
 </script>
+
+<style></style>

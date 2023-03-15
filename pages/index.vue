@@ -46,6 +46,7 @@ export default {
   computed: {
     ...mapState(['product']),
   },
+  
   components: {
     ProductCard,
   },
