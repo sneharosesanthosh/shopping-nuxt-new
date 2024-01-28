@@ -12,13 +12,13 @@ export const mutations = {
       product.quantity == 1 &&
       !state.cartItems.find((item) => item.id === product.id)
     ) {
-        console.log('pushing..')
+      console.log('pushing..')
       state.cartItems.push(product)
     }
     // insert new product to the cart array.
     else {
-        console.log('replacing...')
-      const index = state.cartItems.findIndex(p => p.id === product.id)
+      console.log('replacing...')
+      const index = state.cartItems.findIndex((p) => p.id === product.id)
       state.cartItems.splice(index, 1, product)
     }
   },
@@ -36,12 +36,12 @@ export const actions = {
     console.log('prodcut to be inserted to cart :', product)
     console.log('cart: ', state.cartItems)
     let cartProduct = state.cartItems.find((item) => item.id === product.id)
-    console.log(cartProduct);
+    console.log(cartProduct)
     if (!cartProduct) {
-        console.log('no');
+      console.log('no')
       commit('SET_CART', { ...product, quantity: 1 })
     } else {
-        console.log('yes');
+      console.log('yes')
       commit('SET_CART', {
         ...cartProduct,
         quantity: cartProduct.quantity + 1,
@@ -69,7 +69,7 @@ export const actions = {
       let filtCart = state.cartItems.filter((item) => item.id !== product.id) // new cart items list with removed item.
       commit('DELETE_CART_ITEM', filtCart) //set cartItems with new cart list
     } else {
-      commit('SET_CART', { ...product, quantity: (product.quantity - 1) })
+      commit('SET_CART', { ...product, quantity: product.quantity - 1 })
       console.log('After decrement:', state.cartItems)
     }
   },

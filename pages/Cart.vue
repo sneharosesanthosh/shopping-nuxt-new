@@ -12,10 +12,15 @@
         <p class="card-text">
           {{ item.description }}
         </p>
-        <a href="#" class="btn btn-primary" @click.prevent="deleteCartItem(item.id)"
+        <a
+          href="#"
+          class="btn btn-primary"
+          @click.prevent="deleteCartItem(item.id)"
           >delete</a
         >
-        <a href="#" class="btn btn-primary" @click.prevent="setCartItem(item)">+</a>
+        <a href="#" class="btn btn-primary" @click.prevent="setCartItem(item)"
+          >+</a
+        >
         <a
           href="#"
           class="btn btn-primary"

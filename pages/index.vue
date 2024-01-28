@@ -34,7 +34,12 @@ export default {
   async fetch({ store, error }) {
     try {
       console.log('inside fetch function')
-      await store.dispatch('product/fetchProducts')
+      const result = await store.dispatch('product/fetchProducts')
+      console.log("Products List: ",result)
+      
+      // setTimeout(() => {
+      //   console.log("Products List 2: ",result)
+      // }, 2000);
     } catch (e) {
       error({
         statusCode: 503,
@@ -46,7 +51,7 @@ export default {
   computed: {
     ...mapState(['product']),
   },
-  
+
   components: {
     ProductCard,
   },
